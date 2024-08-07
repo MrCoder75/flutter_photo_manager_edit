@@ -26,6 +26,7 @@ class PermissionDelegate34 : PermissionDelegate() {
     }
 
 
+
     override fun requestPermission(
         permissionsUtils: PermissionsUtils,
         context: Context,
@@ -188,6 +189,18 @@ class PermissionDelegate34 : PermissionDelegate() {
         if (containsImage) {
             permissions.add(mediaImage)
         }
+
+        requestPermission(permissionsUtils, permissions, limitedRequestCode)
+    }
+
+    fun invokePhotoPickerForLimitedAccess(
+        permissionsUtils: PermissionsUtils,
+        resultHandler: ResultHandler
+    ) {
+        this.resultHandler = resultHandler
+
+        val permissions = mutableListOf<String>()
+        permissions.add(mediaVisualUserSelected)
 
         requestPermission(permissionsUtils, permissions, limitedRequestCode)
     }
